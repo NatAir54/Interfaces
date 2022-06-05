@@ -112,8 +112,8 @@ class ClientTest {
 
     static Stream<Deposit> generateSortedDeposits(int limit, int seed) {
         Random r = new Random(seed);
-        return r.ints(limit, 5, 40)
-                .sorted()
+        return r.ints(limit, 5, 40).map(i -> -i)
+                .sorted().map(i -> -i)
                 .mapToObj(v -> v % 2 == 0
                         ? new SpecialDeposit(new BigDecimal(v + ""), v)
                         : new LongDeposit(new BigDecimal(v + ""), v));
