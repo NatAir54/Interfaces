@@ -48,6 +48,8 @@ class ClientTest {
         int length = Array.getLength(depositsField.get(client));
         assertEquals(DEPOSITS.length, length, "The length of 'deposits' field " +
                 "must be " + DEPOSITS.length);
+        assertThrows(IllegalArgumentException.class, () -> new Client(null));
+        assertThrows(IllegalArgumentException.class, () -> new Client(new Deposit[]{}));
     }
 
     @Test
@@ -91,7 +93,6 @@ class ClientTest {
     @MethodSource("casesCountPossibleToProlongDeposit")
     void testCountPossibleToProlongDeposit(Client client, int expected) {
         int actual = client.countPossibleToProlongDeposit();
-        System.out.println(actual);
         assertEquals(expected, actual);
     }
 
