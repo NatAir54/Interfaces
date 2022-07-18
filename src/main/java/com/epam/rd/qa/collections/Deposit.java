@@ -1,6 +1,7 @@
 package com.epam.rd.qa.collections;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public abstract class Deposit implements Comparable<Deposit>{
 
@@ -31,6 +32,20 @@ public abstract class Deposit implements Comparable<Deposit>{
     public BigDecimal totalIncome() {
         return getAmount().add(income());
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Deposit)) return false;
+        Deposit deposit = (Deposit) o;
+        return period == deposit.period && amount.equals(deposit.amount);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(amount, period);
+    }
+
 
 
 }
