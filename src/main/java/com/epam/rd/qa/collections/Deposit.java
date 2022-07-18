@@ -23,10 +23,8 @@ public abstract class Deposit implements Comparable<Deposit>{
     abstract BigDecimal income();
 
     @Override
-    public int compareTo(Deposit other) {
-
-        return this.amount.compareTo (other.getAmount());
-
+    public int compareTo(Deposit o) {
+        return income().add(amount).compareTo(o.income().add(o.amount));
     }
 
     public BigDecimal totalIncome() {
@@ -45,7 +43,6 @@ public abstract class Deposit implements Comparable<Deposit>{
     public int hashCode() {
         return Objects.hash(amount, period);
     }
-
 
 
 }

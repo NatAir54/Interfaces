@@ -24,7 +24,10 @@ public class LongDeposit extends Deposit implements Prolongable {
 
     @Override
     public boolean canToProlong() {
-        if (period<=3) {
+        if(period<=0 || amount.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException();
+        }
+        if (period<36) {
             return true;
         }
         return false;

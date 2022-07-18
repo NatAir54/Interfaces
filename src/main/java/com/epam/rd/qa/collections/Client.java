@@ -15,7 +15,7 @@ public class Client implements Iterable<Deposit>{
     }
 
     public Client (Deposit [] deposits) {
-        if (deposits == null) {
+        if (deposits == null || deposits.length==0) {
             throw new IllegalArgumentException();
         } else {
             this.deposits = deposits;

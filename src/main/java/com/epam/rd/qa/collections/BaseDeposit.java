@@ -5,7 +5,7 @@ import java.math.RoundingMode;
 
 public class BaseDeposit extends Deposit {
 
-    public BaseDeposit (BigDecimal amount, int period) {
+    protected BaseDeposit (BigDecimal amount, int period) {
         super (amount, period);
         if(period<=0 || amount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException();
