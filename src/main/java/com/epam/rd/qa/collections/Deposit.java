@@ -8,7 +8,7 @@ public abstract class Deposit implements Comparable<Deposit>{
     protected final BigDecimal amount;
     protected final int period;
 
-    public Deposit (BigDecimal depositAmount, int depositPeriod) {
+    protected Deposit (BigDecimal depositAmount, int depositPeriod) {
         if(depositPeriod<=0 || depositAmount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException();
         }
